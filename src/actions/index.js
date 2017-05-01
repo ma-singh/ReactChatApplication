@@ -29,19 +29,6 @@ export const sendMessage = (text, user) => {
     }
 }
 
-export const login = () => {
-  return function (dispatch) {
-    dispatch(startAuthorizing())
-
-    firebase.auth()
-      .signInAnonymously()
-      .then(() => {
-          dispatch(userAuthorized())
-          dispatch(fetchMessages())
-      })
-    }
-}
-
 export const startFetchingMessages = () => ({
     type: 'START_FETCHING_MESSAGES'
 })
