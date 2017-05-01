@@ -1,3 +1,16 @@
+export const login = () => {
+  return function (dispatch) {
+    dispatch(startAuthorizing())
+
+    firebase.auth()
+      .signInAnonymously()
+      .then(() => {
+          dispatch(userAuthorized())
+          dispatch(fetchMessages())
+      })
+    }
+}
+
 export const fetchMessages = () => {
   return function(disatch) {
     dispatch(startFetchingMessages())
